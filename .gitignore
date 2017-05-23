@@ -1,10 +1,9 @@
-.idea/
-.ht_access
+.htaccess
 /shared
 /local-config.php
 /sql-dump-*.sql
 /db-sync
-/content/upgrade/
+/content/upgrade
 .DS_Store
-content/uploads
+/content/uploads
 /node_modules
