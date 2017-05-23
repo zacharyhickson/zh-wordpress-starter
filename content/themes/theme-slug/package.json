@@ -8,6 +8,19 @@
     "bootstrap": "4.0.0-alpha.6"
   },
   "devDependencies": {
-    "gulp": "^3.9.1"
+    "browser-sync": "latest",
+    "graceful-fs": "^4.1.11",
+    "gulp": "latest",
+    "gulp-autoprefixer": "latest",
+    "gulp-bower": "latest",
+    "gulp-clean-css": "latest",
+    "gulp-jshint": "^2.0.4",
+    "gulp-plumber": "latest",
+    "gulp-sass": "latest",
+    "gulp-uglify": "latest",
+    "gulp-watch": "latest",
+    "jshint": "^2.9.4",
+    "jshint-stylish": "latest",
+    "minimatch": "^3.0.3"
   }
 }
