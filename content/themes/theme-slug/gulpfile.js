@@ -2,6 +2,7 @@ var gulp      = require( 'gulp' ),
     autoprefixer = require ( 'gulp-autoprefixer' ),
     minifycss   = require( 'gulp-clean-css' ),
     watch       = require( 'gulp-watch' ),
+    concat      = require( 'gulp-concat' ),
     uglify      = require( 'gulp-uglify' ),
     bower       = require( 'gulp-bower' ),
     sass        = require( 'gulp-sass' ),
@@ -22,6 +23,7 @@ var onError = function( err ) {
 // Config Paths
 var config = {
      sassPath: './sass',
+    jsFiles: './js/src/**/*.js',
      nodeDir: './node_modules' 
 }
 
@@ -42,6 +44,10 @@ gulp.task( 'server', function() {
   // Recompile sass into CSS whenever we update any of the source files
   watch( './sass/**/*.scss', function() {
     gulp.start( 'scss' );
+  });
+
+  watch( './js/src/**/*.js', function() {
+    gulp.start( 'scripts' );
   });
 });
 
@@ -72,6 +78,16 @@ gulp.task( 'jshint', function() {
     .pipe( jshint( '.jshintrc' ) )
     .pipe( jshint.reporter( stylish ) )
     .pipe( jshint.reporter( 'fail' ) );
+});
+
+// Bundle and minify JS files
+gulp.task('scripts', function() {  
+    return gulp.src(config.jsFiles)
+      .pipe( plumber( { errorHandler: onError } ) )
+      .pipe(concat('bundle.min.js'))
+        .pipe(uglify())
+        .pipe(gulp.dest('./js'))
+        .pipe( reload( { stream: true } ) );
 });
 
 // The default task. When developing just run 'gulp' and this is what will be ran.
