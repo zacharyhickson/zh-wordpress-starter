@@ -21,8 +21,8 @@ var onError = function( err ) {
 
 // Config Paths
 var config = {
-     sassPath: './scss',
-     bowerDir: './bower_components' 
+     sassPath: './sass',
+     nodeDir: './node_modules' 
 }
 
 
@@ -40,7 +40,7 @@ gulp.task( 'server', function() {
   watch( './**/*.php', reload);
 
   // Recompile sass into CSS whenever we update any of the source files
-  watch( './scss/**/*.scss', function() {
+  watch( './sass/**/*.scss', function() {
     gulp.start( 'scss' );
   });
 });
@@ -48,13 +48,13 @@ gulp.task( 'server', function() {
 
 // Processes SASS and reloads browser.
 gulp.task( 'scss', function() {
-  return gulp.src( './scss/style.scss' )
+  return gulp.src( './sass/style.scss' )
     .pipe( plumber( { errorHandler: onError } ) )
     .pipe(sass({
         outputStyle: 'compressed',
         includePaths: [
-            './scss',
-            config.bowerDir + '/bootstrap-sass/assets/stylesheets']
+            './sass',
+            config.nodeDir + '/bootstrap/scss']
         }))
     .pipe( autoprefixer( {
       browsers: ['last 2 versions'],
