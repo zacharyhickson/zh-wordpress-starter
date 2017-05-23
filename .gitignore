@@ -7,3 +7,4 @@
 /content/upgrade/
 .DS_Store
 content/uploads
+/node_modules
