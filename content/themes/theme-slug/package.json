@@ -1,0 +1,10 @@
+{
+  "name": "theme-slug",
+  "version": "1.0.0",
+  "description": "You should change this",
+  "author": "Zachary Hickson",
+  "license": "proprietary",
+  "dependencies": {
+    "bootstrap": "4.0.0-alpha.6"
+  }
+}
